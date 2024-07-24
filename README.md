@@ -47,4 +47,4 @@ This project is licensed under the MIT License. See the [LICENSE](./LICENSE) fil
 
 ## **Acknowledgments**
 
-Thank you to Professor Dallin for your guidance and support throughout this project/class. Your insights have been greatly appreciated.
+Thank you to Professor Dave Friesen for your guidance and support throughout this project/class. Your insights have been greatly appreciated.
