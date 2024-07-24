@@ -49,4 +49,4 @@ This project is licensed under the MIT License. See the [LICENSE](./LICENSE) fil
 
 ## **Acknowledgments**
 
-Thank you to Professor Dave Friesen for your guidance and support throughout this project/class. Your insights have been greatly appreciated.
+Thank you to Professor Dave Friesen for your guidance and support throughout this project/class. Your insights have been greatly appreciated. I also want to extend my gratitude to my team members, whose contributions and collaboration were instrumental in completing this project. Thank you all for your hard work and dedication.
