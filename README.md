@@ -1,19 +1,19 @@
-# AI-Powered Recipe Recommender
+# **AI-Powered Recipe Recommender**
 
 This project is a part of the Introduction to Artificial Intelligence (AAI-501-02) course in [the Applied Artificial Intelligence Master Program](https://onlinedegrees.sandiego.edu/masters-applied-artificial-intelligence/) at [the University of San Diego (USD)](https://www.sandiego.edu/). 
 
 -- **Project Status: Ongoing**
 
-## Team Members: 
+## **Team Members**
 * [Aktham Almomani](https://github.com/akthammomani)
 * [Yunus Tezcan](https://github.com/fullyuni)
 * Victor Hsu
 
-## Introduction
+## **Introduction**
 
 Welcome to the AI-Powered Recipe Recommender! This application aims to enhance your culinary experience by providing personalized recipe recommendations based on various dietary preferences and nutritional needs. Leveraging advanced machine learning and natural language processing (NLP) techniques, our system analyzes a comprehensive dataset of recipes to deliver insightful recommendations and detailed nutritional information.
 
-## Objective
+## **Objective**
 
 The primary objective of this project is to develop an intelligent web application that helps users discover recipes tailored to their individual preferences and dietary requirements. By analyzing recipe data, including ingredients, cooking instructions, and nutritional values, we aim to provide users with:
 
@@ -24,7 +24,7 @@ The primary objective of this project is to develop an intelligent web applicati
 
 By integrating sophisticated AI techniques and a user-friendly interface, our application aims to make healthy cooking accessible, enjoyable, and personalized for everyone.
 
-## Dataset
+## **Dataset**
 
 **[All recipes website](https://www.allrecipes.com/)** is a popular online platform known for its extensive collection of user-generated recipes. It is a go-to resource for home cooks and culinary enthusiasts, offering a diverse range of recipes across various cuisines and dietary preferences. The website features detailed recipe information, including ingredients, instructions, user ratings, and reviews, making it a comprehensive resource for anyone looking to explore new dishes or improve their cooking skills.
 
@@ -40,3 +40,11 @@ For AI-Powered Recipe Recommender project, we will be using a dataset scraped fr
 * Nutritional information
 
 The dataset from **[All recipes website](https://www.allrecipes.com/)** is a rich resource for AI-Recipe Recommender Project. It contains comprehensive details about each recipe, including titles, ingredients, instructions, ratings, reviews, and nutritional information. Leveraging this data, this project can deliver personalized, relevant, and appealing recipe recommendations to users, enhancing their cooking experience and meeting their dietary preferences.
+
+## **License**
+
+This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for more details.
+
+## **Acknowledgments**
+
+Thank you to Professor Dallin for your guidance and support throughout this project/class. Your insights have been greatly appreciated.
