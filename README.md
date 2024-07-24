@@ -9,7 +9,7 @@ This project is a part of the Introduction to Artificial Intelligence (AAI-501-0
 ## **Team Members**
 * [Aktham Almomani](https://github.com/akthammomani)
 * [Yunus Tezcan](https://github.com/fullyuni)
-* Victor Hsu
+* [Victor Hsu](https://github.com/confooshius)
 
 ## **Introduction**
 
