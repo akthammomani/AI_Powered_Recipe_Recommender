@@ -1,5 +1,7 @@
 # **AI-Powered Recipe Recommender**
 
+![project_logo](https://github.com/user-attachments/assets/da4034bd-1a59-4446-a110-370ba92425fb)
+
 This project is a part of the Introduction to Artificial Intelligence (AAI-501-02) course in [the Applied Artificial Intelligence Master Program](https://onlinedegrees.sandiego.edu/masters-applied-artificial-intelligence/) at [the University of San Diego (USD)](https://www.sandiego.edu/). 
 
 -- **Project Status: Ongoing**
