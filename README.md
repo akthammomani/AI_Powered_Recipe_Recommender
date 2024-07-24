@@ -11,7 +11,7 @@ This project is a part of the Introduction to Artificial Intelligence (AAI-501-0
 
 ## Introduction
 
-Welcome to the AI-Powered Recipe Recommender System! This application aims to enhance your culinary experience by providing personalized recipe recommendations based on various dietary preferences and nutritional needs. Leveraging advanced machine learning and natural language processing (NLP) techniques, our system analyzes a comprehensive dataset of recipes to deliver insightful recommendations and detailed nutritional information.
+Welcome to the AI-Powered Recipe Recommender! This application aims to enhance your culinary experience by providing personalized recipe recommendations based on various dietary preferences and nutritional needs. Leveraging advanced machine learning and natural language processing (NLP) techniques, our system analyzes a comprehensive dataset of recipes to deliver insightful recommendations and detailed nutritional information.
 
 ## Objective
 
@@ -39,4 +39,4 @@ For AI-Powered Recipe Recommender project, we will be using a dataset scraped fr
 * Preparation and Cooking Times
 * Nutritional information
 
-The dataset from **Allrecipes.com** is a rich resource for your AI-Recipe Recommender Project. It contains comprehensive details about each recipe, including titles, ingredients, instructions, ratings, reviews, and nutritional information. Leveraging this data, this project can deliver personalized, relevant, and appealing recipe recommendations to users, enhancing their cooking experience and meeting their dietary preferences.
+The dataset from **[All recipes website](https://www.allrecipes.com/)** is a rich resource for AI-Recipe Recommender Project. It contains comprehensive details about each recipe, including titles, ingredients, instructions, ratings, reviews, and nutritional information. Leveraging this data, this project can deliver personalized, relevant, and appealing recipe recommendations to users, enhancing their cooking experience and meeting their dietary preferences.
