@@ -43,6 +43,12 @@ For AI-Powered Recipe Recommender project, we will be using a dataset scraped fr
 
 The dataset from **[All recipes website](https://www.allrecipes.com/)** is a rich resource for AI-Recipe Recommender Project. It contains comprehensive details about each recipe, including titles, ingredients, instructions, ratings, reviews, and nutritional information. Leveraging this data, this project can deliver personalized, relevant, and appealing recipe recommendations to users, enhancing their cooking experience and meeting their dietary preferences.
 
+## **Repository Contents**: 
+* [Data Wrangling and Pre-Processing Code](https://github.com/akthammomani/AI_Powered_Recipe_Recommender/tree/main/Notebooks/Data_Wrangling_Pre_Processing)
+* [Exploratory Data Analysis (EDA) Code](https://github.com/akthammomani/AI_Powered_Recipe_Recommender/tree/main/Notebooks/EDA)
+* [Modeling Code](https://github.com/akthammomani/AI_Powered_Recipe_Recommender/tree/main/Notebooks/Modeling)
+* [App Development](https://github.com/akthammomani/AI_Powered_Recipe_Recommender/tree/main/App)
+
 ## **License**
 
 This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for more details.
