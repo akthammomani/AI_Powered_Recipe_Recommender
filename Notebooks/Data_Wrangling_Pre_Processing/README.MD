@@ -37,9 +37,7 @@ The dataset from **[All recipes website](https://www.allrecipes.com/)** is a ric
 
 ## **Cleaning and Parsing Ingredients for Standardized Analysis**
 
-Developed a custom function to 
-
- cleans and parses the ingredient strings by:
+Developed a custom function to clean and parse the ingredient strings by:
 
 * Splitting: It divides the ingredient string into a list using semicolons (;) as delimiters.
 * Trimming: It removes any leading or trailing whitespace from each ingredient in the list.
