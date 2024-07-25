@@ -35,7 +35,7 @@ For AI-Powered Recipe Recommender project, we will be using a dataset scraped fr
 
 The dataset from **[All recipes website](https://www.allrecipes.com/)** is a rich resource for AI-Recipe Recommender Project. It contains comprehensive details about each recipe, including titles, ingredients, instructions, ratings, reviews, and nutritional information. Leveraging this data, this project can deliver personalized, relevant, and appealing recipe recommendations to users, enhancing their cooking experience and meeting their dietary preferences.
 
-### **Cleaning and Parsing Ingredients for Standardized Analysis**
+## **Cleaning and Parsing Ingredients for Standardized Analysis**
 
 Developed a custom function to 
 
@@ -53,4 +53,65 @@ def parse_ingredients(ingredient_str):
     return [ingredient.strip() for ingredient in ingredients_list]
 ```
 
+## **Utilizing spaCy (NLP) for Ingredient Extraction and Cleaning**
+
+In this section, we utilize the **spaCy** library for natural language processing to clean and extract high-level ingredients from recipe text data. The code first removes unwanted characters and patterns from the ingredient descriptions. Then, it extracts meaningful high-level ingredient names by filtering out common stop words and measurement terms. This process helps to standardize the ingredient data for better analysis and modeling.
+
+The final dataset includes a new column, **high_level_ingredients**, which contains cleaned and high-level ingredient names, and an **ingredient_count** column, which represents the number of high-level ingredients in each recipe. This approach enhances the quality and consistency of ingredient data, making it more useful for downstream analysis and machine learning tasks.
+
+```python
+import spacy
+nlp = spacy.load("en_core_web_sm-3.1.0")
+
+# List of unwanted characters and patterns to exclude
+unwanted_patterns = [
+    r'\u2009', r'/', r'inch', r'â…›', r'â…”', r'Â®"', r'®', r'\)', r'\(', r'%', r'V8', r'V8®', r'™', r'®', r'\'', r'"'
+]
+
+# Function to clean and trim ingredient text
+def clean_ingredient_text(text):
+    text = text.strip()
+    for pattern in unwanted_patterns:
+        text = re.sub(pattern, '', text)
+    return text
+
+# Function to extract high-level ingredients using spaCy:
+def extract_high_level_ingredients(parsed_ingredients):
+    high_level_ingredients = []
+    
+    # Custom stop words list to filter out non-ingredient words:
+    stop_words = set([
+        'cup', 'cups', 'teaspoon', 'teaspoons', 'tablespoon', 'tablespoons', 'ounce', 'ounces',
+        'pound', 'pounds', 'quart', 'quarts', 'pinch', 'dash', 'taste', 'large', 'small', 'medium',
+        'divided', 'minced', 'sliced', 'diced', 'chopped', 'ground', 'freshly', 'prepared', 'cut',
+        'into', 'strips', 'halves', 'cubes', 'to', 'box', 'spoon', 'spoons', 'optional'
+    ])
+    
+    for ingredient in parsed_ingredients:
+        # Clean and trim ingredient text
+        ingredient = clean_ingredient_text(ingredient)
+        
+        # Remove numbers, fractional numbers, and measurement words
+        ingredient = re.sub(r'\d*\s*[\d¼½¾⅓⅔⅛⅜⅝⅞]+\s*', '', ingredient)  # Remove any numbers or fractional numbers
+        ingredient = re.sub(r'\b(?:' + '|'.join(stop_words) + r')\b', '', ingredient, flags=re.IGNORECASE)  # Remove stop words
+
+        # Remove any remaining unwanted characters and patterns
+        ingredient = clean_ingredient_text(ingredient)
+        
+        doc = nlp(ingredient)
+        for chunk in doc.noun_chunks:
+            filtered_words = [token.text for token in chunk if token.text.lower() not in stop_words and not token.is_digit]
+            if filtered_words:
+                high_level_ingredients.append(' '.join(filtered_words).strip())
+    
+    return list(set(high_level_ingredients))  # Remove duplicates
+
+# Apply the function to the 'parsed_ingredients' column:
+df['high_level_ingredients'] = df['parsed_ingredients'].apply(extract_high_level_ingredients)
+
+# Create the ingredient_count column:
+df['ingredient_count'] = df['high_level_ingredients'].apply(len)
+
+df.head()
+```
 
