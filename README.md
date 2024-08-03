@@ -49,6 +49,30 @@ The dataset from **[All recipes website](https://www.allrecipes.com/)** is a ric
 * [Modeling Code](https://github.com/akthammomani/AI_Powered_Recipe_Recommender/tree/main/Notebooks/Modeling)
 * [App Development](https://github.com/akthammomani/AI_Powered_Recipe_Recommender/tree/main/App)
 
+## **Methods Used**
+
+* Data Wrangling
+* Exploratory Data Analysis (EDA)
+* Data Visualization
+* Natrual Language Processing
+* Deep Learning
+* Principal component analysis (PCA)
+* Unsupervised Machine Learning
+* Recommendation System
+
+## **Technologies**
+
+* **Python**: The main programming language used for the project.
+* **Streamlit**: For developing and deploying the app using Streamlit Sharing.
+* **HTML & CSS**: Web APP personalization.
+* **Natrual Language Processing (NLP)**:
+  * SpaCy: Features Engineering and Parsing Ingredients features
+  * TF-IDF Vectorization: Convert the high_level_ingredients list to a single string and combine relevant features into a single text column.
+  * Principal component analysis (PCA): Use PCA to reduce the dimensionality of the TF-IDF vectors (Reduce the complexity of the TF-IDF matrix while preserving essential information).
+  * Cosine Similarity: Efficiently ranks recipes within each cluster
+* **Unsupervised Machine Learning**: Apply KMeans clustering to group similar recipes together to facilitate efficient and relevant recommendations.
+* **Deep Learning**: Train a neural network to predict the cluster membership of recipes, which helps in finding similar recipes.
+
 ## **License**
 
 This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for more details.
