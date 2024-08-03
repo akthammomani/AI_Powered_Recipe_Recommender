@@ -42,12 +42,11 @@ In this modeling phase, we develop a recommendation system to suggest recipes ba
   * High-Level Ingredients: Convert the high_level_ingredients lists into strings for easier processing.
   * Feature Combination: Combine category, diet type, and high-level ingredients into a single text column.
    ```python
-# Convert high_level_ingredients from list to a single string:
-df['high_level_ingredients_str'] = df['high_level_ingredients'].apply(lambda x: ' '.join(eval(x)) if isinstance(x, str) else ' '.join(x))
-
-# Combine relevant features into a single text column:
-df['combined_features'] = df.apply(lambda row: f"{row['category']} {row['diet_type']} {row['high_level_ingredients_str']}", axis=1)
-```
+      # Convert high_level_ingredients from list to a single string:
+       df['high_level_ingredients_str'] = df['high_level_ingredients'].apply(lambda x: ' '.join(eval(x)) if isinstance(x, str) else ' '.join(x))
+      # Combine relevant features into a single text column:
+      df['combined_features'] = df.apply(lambda row: f"{row['category']} {row['diet_type']} {row['high_level_ingredients_str']}", axis=1)
+   ```
 * **TF-IDF Vectorization:**
   * Purpose: Transform the combined text features into numerical vectors that represent the importance of each term in the dataset.
   * Technique: Use the TF-IDF (Term Frequency-Inverse Document Frequency) vectorizer to create a matrix of features.
