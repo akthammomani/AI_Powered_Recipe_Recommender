@@ -8,7 +8,7 @@
 
 ## **Introduction**
 
-In this notebook, we will be developing an advanced content-based recommendation system for recipes using various machine learning techniques. The goal is to recommend recipes based on the similarity of their ingredients, categories, diet types, and ratings. We will follow these key steps:
+In this stage, we will be developing an advanced content-based recommendation system for recipes using various machine learning techniques. The goal is to recommend recipes based on the similarity of their ingredients, categories, diet types, and ratings. We will follow these key steps:
 
 * **Data Preprocessing:** Convert the high_level_ingredients list to a single string and combine relevant features into a single text column.
 * **TF-IDF Vectorization:** Transform the combined text features into numerical vectors.
