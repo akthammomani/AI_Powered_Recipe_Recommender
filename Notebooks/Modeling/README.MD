@@ -1,8 +1,6 @@
-# Modeling: 
+# Modeling: AI-Powered Recipe Recommender
 
-<center>
-    <img src="https://github.com/user-attachments/assets/da4034bd-1a59-4446-a110-370ba92425fb" alt="modeling">
-</center>
+![model_architecture](https://github.com/user-attachments/assets/2d74c73f-5534-43f5-a126-fbb0c360aa0c)
 
 * **Group 1:** Aktham Almomani, Victor Hsu and Yunus Tezcan
 * **Course:** Introduction to Artificial Intelligence (MS-AAI-501) / University Of San Diego
@@ -40,7 +38,7 @@ The dataset from **[All recipes website](https://www.allrecipes.com/)** is a ric
 
 In this modeling phase, we develop a recommendation system to suggest recipes based on user preferences and recipe similarities. The process involves several key techniques and steps to ensure accurate and relevant recommendations:
 
-![model_architecture](https://github.com/user-attachments/assets/2d74c73f-5534-43f5-a126-fbb0c360aa0c)
+
 
 * **Data Preparation:**
   * High-Level Ingredients: Convert the high_level_ingredients lists into strings for easier processing.
