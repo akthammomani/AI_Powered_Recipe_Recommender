@@ -38,8 +38,6 @@ The dataset from **[All recipes website](https://www.allrecipes.com/)** is a ric
 
 In this modeling phase, we develop a recommendation system to suggest recipes based on user preferences and recipe similarities. The process involves several key techniques and steps to ensure accurate and relevant recommendations:
 
-
-
 * **Data Preparation:**
   * High-Level Ingredients: Convert the high_level_ingredients lists into strings for easier processing.
   * Feature Combination: Combine category, diet type, and high-level ingredients into a single text column.
@@ -100,6 +98,84 @@ Calculating Metrics:
 
 Compute Precision, Recall, and NDCG for the recommendations and average them across all test instances.
 The results are compiled into a DataFrame for easy visualization, summarizing the system's performance in relevance, coverage, and ranking quality.
+
+```python
+# Evaluation function
+def diversify_recommendations(similarities, top_indices, diversity_factor=0.1):
+    # Reduce the influence of very similar items
+    diversified_scores = similarities * (1 - diversity_factor * np.arange(len(similarities)))
+    return np.argsort(diversified_scores)[-len(top_indices):][::-1]
+
+def evaluate_recommendation_system(model, X_test, df, y_test_indices, top_n=5, diversity_factor=0.1):
+    # Predict clusters for the test set
+    predicted_clusters = model.predict(X_test)
+    
+    precision_scores = []
+    recall_scores = []
+    ndcg_scores = []
+    
+    for i, test_idx in enumerate(y_test_indices):
+        target_features = X_test[i].reshape(1, -1)
+        target_cluster = predicted_clusters[i].argmax()
+        cluster_indices = df[df['cluster'] == target_cluster].index
+        
+        # Filter X_test to only include samples within cluster_indices
+        cluster_test_indices = [idx for idx in cluster_indices if idx in y_test_indices]
+        
+        if not cluster_test_indices:
+            continue
+        
+        test_indices_mapped = [np.where(y_test_indices == idx)[0][0] for idx in cluster_test_indices]
+        similarities = cosine_similarity(target_features, X_test[test_indices_mapped]).flatten()
+        top_indices = diversify_recommendations(similarities, test_indices_mapped, diversity_factor)
+        
+        # True labels for evaluation
+        true_labels = (y_test[test_indices_mapped] == y_test[i]).astype(int)
+        predicted_labels = np.zeros_like(true_labels)
+        predicted_labels[top_indices] = 1
+        
+        # Precision and Recall
+        precision = precision_score(true_labels, predicted_labels, zero_division=0)
+        recall = recall_score(true_labels, predicted_labels, zero_division=0)
+        
+        precision_scores.append(precision)
+        recall_scores.append(recall)
+        
+        # NDCG
+        if np.any(true_labels):
+            true_labels_ndcg = np.zeros(len(similarities))
+            true_labels_ndcg[top_indices] = true_labels[top_indices]
+            similarities_ndcg = np.zeros(len(similarities))
+            similarities_ndcg[top_indices] = similarities[top_indices]
+            ndcg = ndcg_score([true_labels_ndcg], [similarities_ndcg])
+            ndcg_scores.append(ndcg)
+    
+    avg_precision = np.mean(precision_scores) * 100
+    avg_recall = np.mean(recall_scores) * 100
+    avg_ndcg = np.mean(ndcg_scores) * 100 if ndcg_scores else 0
+    
+    return round(avg_precision, 2), round(avg_recall, 2), round(avg_ndcg, 2)
+
+# Split the data
+X_train, X_test, y_train_indices, y_test_indices = train_test_split(tfidf_pca, df.index, test_size=0.2, random_state=42)
+y_train = df.loc[y_train_indices, 'cluster'].values
+y_test = df.loc[y_test_indices, 'cluster'].values
+
+# Train the model on the training set
+y_train_cat = tf.keras.utils.to_categorical(y_train, num_classes=25)
+model.fit(X_train, y_train_cat, epochs=25, batch_size=32, validation_split=0.2)
+
+# Evaluate the model
+avg_precision, avg_recall, avg_ndcg = evaluate_recommendation_system(model, X_test, df, y_test_indices)
+
+# Create DataFrame to display results
+results_df = pd.DataFrame({
+    'Metric': ['Average Precision', 'Average Recall', 'Average NDCG'],
+    'Score (%)': [avg_precision, avg_recall, avg_ndcg]
+})
+results_df
+
+```
 
 
 ## **Evaulation Summary Highlights:**
