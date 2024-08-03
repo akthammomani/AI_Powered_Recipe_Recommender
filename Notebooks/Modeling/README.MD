@@ -50,12 +50,24 @@ In this modeling phase, we develop a recommendation system to suggest recipes ba
 * **TF-IDF Vectorization:**
   * Purpose: Transform the combined text features into numerical vectors that represent the importance of each term in the dataset.
   * Technique: Use the TF-IDF (Term Frequency-Inverse Document Frequency) vectorizer to create a matrix of features.
+   ```python
+      tfidf = TfidfVectorizer(stop_words='english')
+      tfidf_matrix = tfidf.fit_transform(df['combined_features'])
+   ```
 * **Dimensionality Reduction:**
   * Purpose: Reduce the complexity of the TF-IDF matrix while preserving essential information.
   * Technique: Apply Principal Component Analysis (PCA) to reduce the TF-IDF matrix to 50 components.
+   ```python
+      pca = PCA(n_components=50)
+      tfidf_pca = pca.fit_transform(tfidf_matrix.toarray())
+   ```
 * **Clustering:**
   * Purpose: Group similar recipes together to facilitate efficient and relevant recommendations.
   * Technique: Use KMeans clustering to divide the dataset into 25 clusters based on the reduced feature set.
+   ```python
+      kmeans = KMeans(n_clusters=25, random_state=42)
+      df['cluster'] = kmeans.fit_predict(tfidf_pca)
+   ```
 * **Neural Network for Similarity Learning:**
   * Purpose: Learn to predict the cluster membership of recipes, which helps in finding similar recipes.
   * Architecture:
@@ -63,9 +75,26 @@ In this modeling phase, we develop a recommendation system to suggest recipes ba
     * Hidden Layers: Two dense layers with 128 and 64 neurons, respectively, using ReLU activation.
     * Output Layer: 25 output neurons with softmax activation to predict cluster probabilities.
   * Compilation: The model is compiled using the Adam optimizer and categorical cross-entropy loss.
+   ```python
+      # Neural Network for learning similarity with 25 output neurons:
+      input_features = Input(shape=(50,))
+      dense1 = Dense(128, activation='relu')(input_features)
+      dense2 = Dense(64, activation='relu')(dense1)
+      output = Dense(25, activation='softmax')(dense2)
+      model = Model(inputs=input_features, outputs=output)
+      model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
+   ```
 * **Model Training:**
   * Data: The PCA-transformed features are used as input (X), and the cluster labels are one-hot encoded as targets (y).
   * Training: The model is trained over 25 epochs with a batch size of 32 and a validation split of 20%.
+   ```python
+      # Prepare the data for training:
+      X = tfidf_pca
+      y = tf.keras.utils.to_categorical(df['cluster'], num_classes=25)
+
+      # Train the model:
+      model.fit(X, y, epochs=25, batch_size=32, validation_split=0.2)
+   ```
 * **Recipe Recommendation Function:**
   * Purpose: Generate similar recipe recommendations based on a given recipe.
   * Process:
@@ -73,7 +102,24 @@ In this modeling phase, we develop a recommendation system to suggest recipes ba
     * Calculate Similarities: Use cosine similarity to find recipes within the same cluster.
     * Diversification (Optional): Adjust similarity scores to promote diversity in recommendations.
     * Top Recommendations: Select the top N similar recipes, optionally diversified.
-
+   ```python
+      def get_similar_recipes(recipe_name, top_n=5, diversify=False, diversity_factor=0.1):
+      target_index = df[df['name'] == recipe_name].index[0]
+      target_features = tfidf_pca[target_index].reshape(1, -1)
+      target_cluster = model.predict(target_features).argmax()
+      cluster_indices = df[df['cluster'] == target_cluster].index
+      similarities = cosine_similarity(target_features, tfidf_pca[cluster_indices]).flatten()
+      weighted_similarities = similarities * df.loc[cluster_indices, 'rating']
+    
+      if diversify:
+          # Diversify recommendations by adjusting the similarity scores
+          diversified_scores = weighted_similarities * (1 - diversity_factor * np.arange(len(weighted_similarities)))
+          similar_indices = cluster_indices[np.argsort(diversified_scores)[-top_n:][::-1]]
+      else:
+          similar_indices = cluster_indices[np.argsort(weighted_similarities)[-top_n:][::-1]]
+    
+      return df.iloc[similar_indices]
+   ```
 This comprehensive approach ensures that the recommendation system is both accurate and efficient, providing users with relevant and varied recipe suggestions based on their preferences and the characteristics of the recipes in the dataset.
 
 ## **Evaluation of the Recommendation System**
