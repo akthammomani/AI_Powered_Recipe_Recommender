@@ -100,3 +100,22 @@ Calculating Metrics:
 
 Compute Precision, Recall, and NDCG for the recommendations and average them across all test instances.
 The results are compiled into a DataFrame for easy visualization, summarizing the system's performance in relevance, coverage, and ranking quality.
+
+
+## **Evaulation Summary Highlights:**
+
+| Metric             | Score (%) |
+|--------------------|-----------|
+| **Average Precision** | 96.92     |
+| **Average Recall**    | 96.92     |
+| **Average NDCG**      | 100.00    |
+
+* **Average Precision:** Of all the recipes recommended by the system, `96.92%` were relevant. This indicates a high level of accuracy in the recommendations provided, meaning users are likely to find the suggested recipes relevant to their interests.
+* **Average Recall:** The system was able to identify `96.92%` of all relevant recipes in the dataset. This high recall suggests that the recommendation system is comprehensive in retrieving almost all relevant items, ensuring users do not miss out on potentially interesting recipes.
+* **Average NDCG:** The Normalized Discounted Cumulative Gain (NDCG) score of `100.00%` indicates perfect ranking quality. This means that the most relevant recipes are consistently placed at the top of the recommendation list, enhancing user satisfaction by ensuring the best options are always presented first.
+
+**Overall Performance**
+* High Precision and Recall: The system demonstrates both high precision and high recall, indicating that it effectively identifies and recommends relevant recipes.
+* Perfect Ranking: The perfect NDCG score reflects the system's ability to rank the recommendations accurately, presenting the most relevant recipes first.
+
+These metrics suggest that the recommendation system is performing exceptionally well. Users are likely to experience highly relevant and well-ranked recipe recommendations, leading to a positive user experience.
