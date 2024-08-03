@@ -104,21 +104,21 @@ In this modeling phase, we develop a recommendation system to suggest recipes ba
     * Top Recommendations: Select the top N similar recipes, optionally diversified.
    ```python
       def get_similar_recipes(recipe_name, top_n=5, diversify=False, diversity_factor=0.1):
-      target_index = df[df['name'] == recipe_name].index[0]
-      target_features = tfidf_pca[target_index].reshape(1, -1)
-      target_cluster = model.predict(target_features).argmax()
-      cluster_indices = df[df['cluster'] == target_cluster].index
-      similarities = cosine_similarity(target_features, tfidf_pca[cluster_indices]).flatten()
-      weighted_similarities = similarities * df.loc[cluster_indices, 'rating']
+          target_index = df[df['name'] == recipe_name].index[0]
+          target_features = tfidf_pca[target_index].reshape(1, -1)
+          target_cluster = model.predict(target_features).argmax()
+          cluster_indices = df[df['cluster'] == target_cluster].index
+          similarities = cosine_similarity(target_features, tfidf_pca[cluster_indices]).flatten()
+          weighted_similarities = similarities * df.loc[cluster_indices, 'rating']
     
-      if diversify:
-          # Diversify recommendations by adjusting the similarity scores
-          diversified_scores = weighted_similarities * (1 - diversity_factor * np.arange(len(weighted_similarities)))
-          similar_indices = cluster_indices[np.argsort(diversified_scores)[-top_n:][::-1]]
-      else:
-          similar_indices = cluster_indices[np.argsort(weighted_similarities)[-top_n:][::-1]]
+          if diversify:
+              # Diversify recommendations by adjusting the similarity scores
+              diversified_scores = weighted_similarities * (1 - diversity_factor * np.arange(len(weighted_similarities)))
+              similar_indices = cluster_indices[np.argsort(diversified_scores)[-top_n:][::-1]]
+          else:
+              similar_indices = cluster_indices[np.argsort(weighted_similarities)[-top_n:][::-1]]
     
-      return df.iloc[similar_indices]
+          return df.iloc[similar_indices]
    ```
 This comprehensive approach ensures that the recommendation system is both accurate and efficient, providing users with relevant and varied recipe suggestions based on their preferences and the characteristics of the recipes in the dataset.
 
