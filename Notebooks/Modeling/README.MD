@@ -71,3 +71,32 @@ In this modeling phase, we develop a recommendation system to suggest recipes ba
     * Top Recommendations: Select the top N similar recipes, optionally diversified.
 
 This comprehensive approach ensures that the recommendation system is both accurate and efficient, providing users with relevant and varied recipe suggestions based on their preferences and the characteristics of the recipes in the dataset.
+
+## **Evaluation of the Recommendation System**
+
+To ensure our recipe recommendation system is effective and meets user needs, we evaluate its performance using three key metrics: Precision, Recall, and Normalized Discounted Cumulative Gain (NDCG). These metrics help us measure the relevance, coverage, and ranking quality of the recommendations.
+
+**Metrics Used for Evaluation**
+* Precision:
+  * Definition: The proportion of recommended recipes that are relevant.
+  * Importance: Ensures users see mostly relevant recipes.
+* Recall:
+  * Definition: The proportion of all relevant recipes that are recommended.
+  * Importance: Ensures users do not miss out on relevant recipes.
+* NDCG (Normalized Discounted Cumulative Gain): 
+  * Definition: Evaluates the ranking quality of the recommendations, emphasizing top-ranked relevant items.
+  * Importance: Ensures the most relevant recipes are presented first.
+
+**Techniques Used for Evaluation**
+* Cosine Similarity: Measures the similarity between recipes to identify the most similar ones to a given target recipe.
+* Diversification: Ensures recommendations are diverse by adjusting similarity scores to reduce the influence of very similar items.
+* Clustering: Groups similar recipes into clusters to facilitate finding and recommending similar recipes.
+
+**Evaluation Process**
+* Data Preparation: Split the dataset into training and testing sets.
+* Model Training: Train a neural network model to learn recipe similarities based on feature vectors.
+* Generating Recommendations: Predict clusters for test recipes, calculate cosine similarities within clusters, and apply diversification if enabled.
+Calculating Metrics:
+
+Compute Precision, Recall, and NDCG for the recommendations and average them across all test instances.
+The results are compiled into a DataFrame for easy visualization, summarizing the system's performance in relevance, coverage, and ranking quality.
