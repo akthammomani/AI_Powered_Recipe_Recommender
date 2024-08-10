@@ -62,8 +62,8 @@ The dataset from **[All recipes website](https://www.allrecipes.com/)** is a ric
 * **Natrual Language Processing (NLP)**:
   * SpaCy: Features Engineering and Parsing Ingredients features
   * TF-IDF Vectorization: Convert the high_level_ingredients list to a single string and combine relevant features into a single text column.
-  * Principal component analysis (PCA): Use PCA to reduce the dimensionality of the TF-IDF vectors (Reduce the complexity of the TF-IDF matrix while preserving essential information).
   * Cosine Similarity: Efficiently ranks recipes within each cluster
+* **Principal component analysis (PCA)**: Use PCA to reduce the dimensionality of the TF-IDF vectors (Reduce the complexity of the TF-IDF matrix while preserving essential information).
 * **Unsupervised Machine Learning**: Apply KMeans clustering to group similar recipes together to facilitate efficient and relevant recommendations.
 * **Deep Learning**: Train a neural network to predict the cluster membership of recipes, which helps in finding similar recipes.
 
