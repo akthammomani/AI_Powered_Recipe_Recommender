@@ -48,11 +48,11 @@ The dataset from **[All recipes website](https://www.allrecipes.com/)** is a ric
 * Data Wrangling
 * Exploratory Data Analysis (EDA)
 * Data Visualization
-* Natrual Language Processing
+* Natrual Language Processing (NLP)
 * Deep Learning
 * Principal component analysis (PCA)
-* Unsupervised Machine Learning
-* Recommendation System
+* Unsupervised Machine Learning (K-Means)
+* Recommendation System (Advanced Content-Based Recommender)
 
 ## **Technologies**
 
