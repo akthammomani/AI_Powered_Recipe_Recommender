@@ -18,4 +18,4 @@
     - Select recipes based on categories like "Main Dish," "Desserts," or "World Cuisine."
     - Filter by diet type, such as "Low Carb" or "High Protein."
     - Choose recipes based on serving size or cooking time, perfect for specific meal planning needs.
-    """
+
