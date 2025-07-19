@@ -2,7 +2,6 @@
 
 ![model_architecture](https://github.com/user-attachments/assets/2d74c73f-5534-43f5-a126-fbb0c360aa0c)
 
-* **Group 1:** Aktham Almomani, Victor Hsu and Yunus Tezcan
 * **Course:** Introduction to Artificial Intelligence (MS-AAI-501) / University Of San Diego
 * **Semester:** Summer 2024
 
