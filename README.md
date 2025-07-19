@@ -62,6 +62,8 @@ The dataset from **[All recipes website](https://www.allrecipes.com/)** is a ric
 * **Unsupervised Machine Learning**: Apply KMeans clustering to group similar recipes together to facilitate efficient and relevant recommendations.
 * **Deep Learning**: Train a neural network to predict the cluster membership of recipes, which helps in finding similar recipes.
 
+  ![model_architecture](https://github.com/user-attachments/assets/2d74c73f-5534-43f5-a126-fbb0c360aa0c)
+
 ## **Repository Contents**: 
 * [Data Wrangling and Pre-Processing Code](https://github.com/akthammomani/AI_Powered_Recipe_Recommender/tree/main/Notebooks/Data_Wrangling_Pre_Processing)
 * [Exploratory Data Analysis (EDA) Code](https://github.com/akthammomani/AI_Powered_Recipe_Recommender/tree/main/Notebooks/EDA)
