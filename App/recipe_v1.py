@@ -15,9 +15,9 @@ icon = Image.open("chef.jpg")
 st.set_page_config(layout='centered', page_title='AI-Powered Recipe Recommender', page_icon=icon)
 
 # Let's upload the Painted Ladies image:
-image = Image.open("project_logo.JPG")
+image = Image.open("project_logo.jpg")
 # Let's specify which column, fix its width, and let's give this image a caption:
-st.image(Image.open("project_logo.JPG"), use_column_width=True)
+st.image(Image.open("project_logo.jpg"), use_column_width=True)
 
 
 # Load the saved models and components
