@@ -1,4 +1,4 @@
-# **AI-Powered Recipe Recommender**
+# **AI-Powered Recipe Recommender** [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_red.svg)](https://ai-powered-recipe-recommender.streamlit.app//)
 
 ![project_logo](https://github.com/user-attachments/assets/da4034bd-1a59-4446-a110-370ba92425fb)
 
