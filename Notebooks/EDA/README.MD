@@ -1,6 +1,5 @@
 # Exploratory Data Analysis: AI-Powered Recipe Recommender
 
-* **Group 1:** Aktham Almomani, Victor Hsu and Yunus Tezcan
 * **Course:** Introduction to Artificial Intelligence (MS-AAI-501) / University Of San Diego
 * **Semester:** Summer 2024
 
